@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perfil</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script type="module" src="./js/layout.js" defer></script>
+    <script type="module" src="./js/auth.js" defer></script>
+    <script type="module" src="./js/profile.js" defer></script>
+  </head>
+  <body>
+    <div class="page">
+      <site-header nav></site-header>
+      <section class="section">
+        <h1 class="welcomeMessage">Meu Perfil</h1>
+        <div class="formWrapper">
+          <div class="inputWrapper">
+            <label>Nome</label>
+            <p class="profileValue" id="perfilNome"></p>
+          </div>
+          <form class="loginForm" id="passwordForm">
+            <div class="inputWrapper">
+              <label>Senha atual</label>
+              <input name="senhaAtual" type="password" required />
+            </div>
+            <div class="inputWrapper">
+              <label>Nova senha</label>
+              <input name="novaSenha" type="password" required />
+            </div>
+            <div class="inputWrapper">
+              <label>Confirmar nova senha</label>
+              <input name="confirmarSenha" type="password" required />
+            </div>
+            <button type="submit" class="loginButton">Alterar Senha</button>
+          </form>
+        </div>
+      </section>
+      <site-footer></site-footer>
+    </div>
+  </body>
+</html>

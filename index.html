@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/layout.js" type="module" defer></script>
+    <script src="./js/auth.js" type="module" defer></script>
+</head>
+<body>
+    <div class="page">
+    <site-header></site-header>
+    <section class="section">
+          <h1 class="welcomeMessage">Seja bem vindo!</h1>
+        <div class="formWrapper">
+
+            <form class="loginForm" id="loginForm">
+                <div class="inputWrapper">
+                <label>Nome</label>
+                <input name="nome"  type="text" required>
+                </div>
+                <div  class="inputWrapper">
+                    <label>Senha</label>
+                <input name="senha" type="password" required>
+                </div>
+                <button type="submit" class="loginButton">Entrar</button>
+            </form>
+            <a href="./registro.html">Registre-se</a>
+        </div>
+    </section>
+    <site-footer></site-footer>
+    </div>
+</body>
+</html>

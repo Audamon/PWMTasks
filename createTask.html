@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Criar Tarefa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script type="module" src="./js/layout.js" defer></script>
+    <script type="module" src="./js/auth.js" defer></script>
+    <script type="module" src="./js/tasks.js" defer></script>
+  </head>
+  <body>
+    <div class="page">
+      <site-header nav></site-header>
+      <section class="section">
+        <div class="formWrapper">
+          <form class="loginForm" id="taskRegisterForm">
+            <div class="inputWrapper">
+              <label class="">Nome da Tarefa</label>
+              <input name="nomeTarefa" type="text" required />
+            </div>
+            <div class="inputWrapper">
+              <label class=""> Descrição da Tarefa</label>
+              <input name="descricaoTarefa" type="text" required />
+            </div>
+            <div class="inputWrapper">
+              <label class="">Data Prevista</label>
+              <input name="dataPrevista" type="date" required />
+            </div>
+            <div class="inputWrapper">
+              <label class="">Urgência</label>
+              <select name="urgencia" required>
+                <option value="baixa">Baixa</option>
+                <option value="media">Média</option>
+                <option value="alta">Alta</option>
+              </select>
+            </div>
+            <button type="submit" class="loginButton">Criar Tarefa</button>
+          </form>
+        </div>
+      </section>
+      <site-footer></site-footer>
+    </div>
+  </body>
+</html>
