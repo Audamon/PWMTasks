@@ -18,7 +18,7 @@ export const requireLogin = () => {
   }
   return user;
 };
-// Login
+// Login: procura um usuário com nome e senha iguais e abre a sessão
 const loginForm = document.getElementById("loginForm");
 loginForm?.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -34,20 +34,20 @@ loginForm?.addEventListener("submit", (e) => {
   }
 });
 
-// Registro 
+// Registro: cria um novo usuário
 const registerForm = document.getElementById("registerForm");
 registerForm?.addEventListener("submit", (e) => {
   e.preventDefault();
   const data = Object.fromEntries(new FormData(registerForm).entries());
   const users = getUsers();
-  data.id = Date.now();
+  data.id = Date.now(); // id único
   users.push(data);
   saveUsers(users);
   alert("Cadastro realizado com sucesso! Faça login.");
   window.location.href = "./index.html";
 });
 
-// Logout 
+// Logout: encerra a sessão
 const logoutLink = document.getElementById("sair");
 logoutLink?.addEventListener("click", (e) => {
   e.preventDefault();

@@ -3,14 +3,15 @@
   /* Cor primária: indigo/azul suave, remete a foco e produtividade. */
   --color-primary: #4f6ef7;
   --color-primary-dark: #3d57d6;
-  --color-primary-light: #eef1fe;
+  --color-primary-light: #6fa9fc;
 
   /* Neutros */
-  --color-bg: #f6f7fb;
-  --color-surface: #ffffff;
-  --color-border: #e3e6f0;
+  --color-bg: #eef3fa;
+  --color-surface: #8ebcfd;
+  --color-surface-light: #a2c9ff;
+  --color-border: #eef3fa;
   --color-text: #1f2430;
-  --color-text-muted: #6b7280;
+  --color-text-muted: #fafafa;
 
   /* Semânticas (usadas nos badges de urgência/status) */
   --color-success: #16a34a;
@@ -32,6 +33,7 @@
   --transition: 160ms ease;
 }
 
+/* Base da página */
 body {
   margin: 0;
   padding: 0;
@@ -40,12 +42,14 @@ body {
   background-color: var(--color-bg);
   color: var(--color-text);
 }
+/* Estrutura geral: cabeçalho, conteúdo e rodapé em coluna (rodapé sempre no fim) */
 .page {
   min-height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
 }
+/* Cabeçalho fixo no topo (sticky) */
 .header {
   width: 100%;
   min-height: 64px;
@@ -70,6 +74,7 @@ body {
   font-weight: 700;
   color: var(--color-primary);
 }
+/* Área central do conteúdo */
 .section {
   width: 100%;
   flex: 1 0 auto;
@@ -81,6 +86,7 @@ body {
   padding: 32px 16px;
   box-sizing: border-box;
 }
+/* Rodapé */
 .footer {
   width: 100%;
   background-color: var(--color-surface);
@@ -126,12 +132,23 @@ body {
     color: var(--color-primary);
     text-decoration: underline;
   }
+  .footerLinks {
+    display: flex;
+    gap: 12px;
+  }
 }
+/* Linha vertical que separa a última coluna do rodapé */
+.footerColumn:last-child {
+  border-left: 1px solid #332f2f;
+  padding-left: 24px;
+}
+
 .footerBottom {
   margin: 0;
   font-size: 12px;
   color: var(--color-text-muted);
 }
+/* Cartão dos formulários (login, registro, criar tarefa, perfil) */
 .formWrapper {
   display: flex;
   flex-direction: column;
@@ -156,6 +173,7 @@ body {
   align-items: center;
   gap: 20px;
 }
+/* Campo de formulário: rótulo + input/select */
 .inputWrapper {
   display: flex;
   flex-direction: column;
@@ -178,7 +196,7 @@ body {
     font-family: inherit;
     font-size: 14px;
     color: var(--color-text);
-    background-color: var(--color-surface);
+    background-color: var(--color-surface-light);
     transition:
       border-color var(--transition),
       box-shadow var(--transition);
@@ -195,6 +213,7 @@ body {
   font-weight: 600;
   color: var(--color-text);
 }
+/* Botão principal */
 .loginButton {
   border: none;
   border-radius: var(--radius-pill);
@@ -215,6 +234,7 @@ body {
   background-color: var(--color-primary-dark);
   box-shadow: var(--shadow-sm);
 }
+/* Links do menu */
 .navLinks {
   display: flex;
   align-items: center;
@@ -237,11 +257,12 @@ body {
   }
 }
 
+/* Lista de tarefas: cartão e tabela */
 .tableCard {
   width: 100%;
   max-width: 800px;
   background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
+  border: px solid var(--color-border);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
   overflow-x: auto;
@@ -291,6 +312,14 @@ body {
     background-color: var(--color-primary-light);
   }
 }
+/* Nome e descrição: texto longo é cortado com "..." (o completo aparece no modal) */
+.cellText {
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* Botão Excluir da tabela */
 .rowAction {
   border: 1px solid var(--color-danger);
   background-color: transparent;
@@ -333,6 +362,7 @@ body {
   color: var(--color-danger);
 }
 
+/* Modal de confirmação */
 .modal {
   position: fixed;
   inset: 0;
@@ -350,6 +380,8 @@ body {
   box-shadow: var(--shadow-md);
   width: 100%;
   max-width: 320px;
+  max-height: 90vh;
+  overflow-y: auto;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -371,6 +403,23 @@ body {
 }
 .modal-content .close:hover {
   color: var(--color-text);
+}
+/* Dados completos da tarefa dentro do modal */
+.modal-details {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  dt {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text-muted);
+  }
+  dd {
+    margin: 0 0 8px;
+    color: var(--color-text);
+    overflow-wrap: anywhere;
+  }
 }
 .modal-actions {
   display: flex;
@@ -404,7 +453,7 @@ body {
   background-color: var(--color-bg);
 }
 
-/*  Responsivo  */
+/* Responsivo: telas de até 600px */
 @media (max-width: 600px) {
   .header,
   .footer {
@@ -431,6 +480,7 @@ body {
     flex-direction: column;
     gap: 12px;
   }
+  /* Oculta a última coluna do rodapé no celular */
   .footerColumn:last-child {
     display: none;
   }
@@ -446,6 +496,7 @@ body {
   }
 
 
+  /* Tabela vira lista de cards: o cabeçalho some e cada célula mostra seu rótulo (data-label) */
   .tableCard {
     background-color: transparent;
     border: none;
@@ -496,4 +547,19 @@ body {
   .table tbody td:last-child {
     justify-content: flex-end;
   }
+  /* No card há espaço: mostra nome e descrição por inteiro */
+  .table tbody td.cellText {
+    max-width: none;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    text-align: right;
+  }
+}
+/* Autopreenchimento do navegador: mantém o mesmo fundo dos outros campos */
+.inputWrapper input:-webkit-autofill,
+.inputWrapper input:-webkit-autofill:hover,
+.inputWrapper input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px var(--color-surface-light) inset;
+  -webkit-text-fill-color: var(--color-text);
+  caret-color: var(--color-text);
 }
