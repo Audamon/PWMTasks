@@ -13,6 +13,7 @@ if (user) {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(passwordForm).entries());
 
+    // Valida: senha atual correta, nova senha preenchida e confirmação igual
     if (data.senhaAtual !== user.senha) {
       alert("Senha atual incorreta!");
       return;
@@ -26,6 +27,7 @@ if (user) {
       return;
     }
 
+    // Atualiza a senha no cadastro e na sessão
     const users = getUsers();
     const index = users.findIndex((u) => u.id === user.id);
     if (index === -1) {
